@@ -6,6 +6,7 @@ import math
 from sklearn import cross_validation, linear_model
 import csv
 import random
+import numpy
 
 base_elo = 1600
 team_elos = {}  # Reset each year.
@@ -42,7 +43,7 @@ def calc_elo(win_team, lose_team, season):
 
 
 def initialize_data():
-    for i in range(1985, 2017):
+    for i in range(1985, prediction_year+1):
         team_elos[i] = {}
         team_stats[i] = {}
 
@@ -229,7 +230,7 @@ if __name__ == "__main__":
     # Check accuracy.
     print("Doing cross-validation.")
     print(cross_validation.cross_val_score(
-        model, X, y, cv=10, scoring='accuracy', n_jobs=-1
+        model, numpy.array(X), numpy.array(y), cv=10, scoring='accuracy', n_jobs=-1
     ).mean())
 
     model.fit(X, y)
