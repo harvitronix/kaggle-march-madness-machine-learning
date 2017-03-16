@@ -13,8 +13,8 @@ team_stats = {}
 X = []
 y = []
 submission_data = []
-folder = 'data-v2'
-prediction_year = 2016
+folder = 'data-v3'
+prediction_year = 2017
 
 
 def calc_elo(win_team, lose_team, season):
